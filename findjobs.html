@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JobPortal — Find Jobs · 10 Unique Sections</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 120px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #4ecdc4;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ----- AOS ANIMATIONS (full movement) ----- */
+        [data-aos="fade-left"] { transform: translateX(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-right"] { transform: translateX(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-up"] { transform: translateY(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-down"] { transform: translateY(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-in"] { transform: scale(0.6); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-out"] { transform: scale(1.4); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="flip-left"] { transform: perspective(2500px) rotateY(-150deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-right"] { transform: perspective(2500px) rotateY(150deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-up"] { transform: perspective(2500px) rotateX(-150deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-down"] { transform: perspective(2500px) rotateX(150deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos].aos-animate { transform: translate(0) scale(1) rotateY(0) rotateX(0); opacity: 1; }
+
+        /* ----- BUTTON STYLES (hover effects - content never disappears) ----- */
+        .primary-btn, .outline-btn, .card-btn, .trending-btn, .company-btn, .role-btn, .salary-btn, .app-btn, .subscribe-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 60px;
+            padding: 12px 28px;
+        }
+
+        .primary-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+        .primary-btn:hover {
+            background: #ff6b6b;
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255,107,107,0.4);
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #1e1e2f;
+        }
+        .outline-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .card-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        .card-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .trending-btn, .company-btn, .role-btn, .salary-btn {
+            background: transparent;
+            color: #4ecdc4;
+            padding: 6px 12px;
+            font-size: 13px;
+            border: 1px solid #4ecdc4;
+        }
+        .trending-btn:hover, .company-btn:hover, .role-btn:hover, .salary-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            transform: translateX(5px);
+        }
+
+        .subscribe-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+        .subscribe-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .app-btn {
+            background: #1e1e2f;
+            color: white;
+            padding: 15px 30px;
+        }
+        .app-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            transform: translateY(-5px);
+        }
+
+        /* ===== SECTION 1: HERO with background image ===== */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, rgba(30,30,47,0.85), rgba(78,205,196,0.85)), url('Jp12.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 1000px;
+            padding: 60px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .hero-content h1 {
+            font-size: 68px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+        .hero-content h1 span {
+            color: #4ecdc4;
+            text-decoration: underline;
+            text-underline-offset: 10px;
+        }
+        .hero-description {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: #4ecdc4;
+        }
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* ===== SECTION 2: JOB CATEGORIES (floating cards) ===== */
+        .categories-wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .floating-category {
+            background: white;
+            border-radius: 30px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 20px 30px -10px rgba(78,205,196,0.2);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+            position: relative;
+            overflow: hidden;
+        }
+        .floating-category:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: #4ecdc4;
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .floating-category:hover:before {
+            transform: scaleX(1);
+        }
+        .floating-category:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 40px -10px rgba(78,205,196,0.4);
+        }
+        .floating-category i {
+            font-size: 56px;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+        }
+        .floating-category h3 {
+            font-size: 24px;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+        }
+        .category-meta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* ===== SECTION 3: LOCATION SHOWCASE (glass morphism) ===== */
+        .location-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .glass-location {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+        }
+        .glass-location img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+        .glass-location:hover img {
+            transform: scale(1.15);
+        }
+        .glass-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30,30,47,0.4);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .glass-location:hover .glass-overlay {
+            opacity: 1;
+        }
+        .glass-overlay h3 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .glass-overlay p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        /* ===== SECTION 4: FEATURED JOBS (horizontal cards) ===== */
+        .featured-jobs-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .horizontal-job-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        .horizontal-job-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px rgba(78,205,196,0.2);
+            border-color: #4ecdc4;
+        }
+        .horizontal-job-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+        .job-info {
+            flex: 1;
+        }
+        .job-info h3 {
+            font-size: 22px;
+            color: #1e1e2f;
+            margin-bottom: 5px;
+        }
+        .job-meta {
+            display: flex;
+            gap: 15px;
+            color: #64748b;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        /* ===== SECTION 5: TRENDING ROLES (bubble design) ===== */
+        .trending-cloud {
+            background: white;
+            border-radius: 50px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .bubble-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .role-bubble {
+            background: #f1f5f9;
+            padding: 15px 30px;
+            border-radius: 60px;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .role-bubble:hover {
+            background: #4ecdc4;
+            transform: scale(1.1) rotate(2deg);
+        }
+        .role-bubble i {
+            color: #4ecdc4;
+            transition: all 0.3s;
+        }
+        .role-bubble:hover i {
+            color: #1e1e2f;
+        }
+        .role-bubble span {
+            font-weight: 600;
+            color: #1e1e2f;
+        }
+
+        /* ===== SECTION 6: TOP EMPLOYERS (profile grid) ===== */
+        .employer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        .employer-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .employer-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 30px rgba(78,205,196,0.3);
+        }
+        .employer-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .employer-card h4 {
+            font-size: 18px;
+            color: #1e1e2f;
+        }
+        .employer-card p {
+            color: #4ecdc4;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        /* ===== SECTION 7: SALARY GUIDE (stacked cards) ===== */
+        .salary-stack {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .stack-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 25px 40px -15px rgba(78,205,196,0.3);
+            transition: all 0.4s;
+            position: relative;
+        }
+        .stack-card:hover {
+            transform: perspective(1000px) rotateX(5deg) translateY(-15px);
+        }
+        .stack-card i {
+            font-size: 64px;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+        }
+        .salary-range {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1e1e2f;
+            margin: 20px 0;
+        }
+
+        /* ===== SECTION 8: JOB ALERTS (with validation) ===== */
+        .alerts-unique {
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a3a4a 100%);
+            border-radius: 50px;
+            padding: 80px;
+            text-align: center;
+            color: white;
+        }
+        .alerts-form {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 40px auto 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .alerts-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 60px;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .alerts-form input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* ===== SECTION 9: CAREER RESOURCES (magazine style) ===== */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .magazine-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .magazine-card:hover {
+            transform: scale(1.02) translateY(-10px);
+            box-shadow: 0 30px 50px rgba(78,205,196,0.3);
+        }
+        .magazine-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .magazine-content {
+            padding: 30px;
+        }
+        .magazine-content h3 {
+            font-size: 22px;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+        }
+        .resource-meta {
+            color: #4ecdc4;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+
+        /* ===== SECTION 10: MOBILE APP (split design) ===== */
+        .app-showcase {
+            background: white;
+            border-radius: 40px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.05);
+        }
+        .app-content h2 {
+            font-size: 42px;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+        }
+        .app-features {
+            margin: 30px 0;
+        }
+        .app-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .app-feature i {
+            color: #4ecdc4;
+            font-size: 24px;
+        }
+        .app-image img {
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        /* ----- RESPONSIVE (no horizontal scroll) ----- */
+        @media (max-width: 1200px) {
+            .categories-wrapper, .employer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .location-showcase, .salary-stack, .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .mid-section { padding: 0 20px; }
+            .hero-content h1 { font-size: 48px; }
+            .categories-wrapper, .featured-jobs-wrapper, .location-showcase, 
+            .employer-grid, .salary-stack, .resources-grid, .app-showcase {
+                grid-template-columns: 1fr;
+            }
+            .app-showcase {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .trending-cloud {
+                padding: 30px;
+            }
+        }
+        @media (max-width: 768px) {
+            .mid-section { padding: 0 15px; }
+            .hero-content h1 { font-size: 36px; }
+            .hero-content { padding: 40px 20px; }
+            .horizontal-job-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .job-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .stat-number { font-size: 32px; }
+            .alerts-unique { padding: 40px 20px; }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 28px; }
+            .section-header h2 { font-size: 30px; }
+            .bubble-container .role-bubble {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img, video, svg { max-width: 100%; height: auto; }
+
+        /* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #4ecdc4;  /* You can change this color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #3ab7ad;  /* Darker shade on hover */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(78,205,196,0.4);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+    <!-- HEADER PLACEHOLDER - Header will load here -->
+    <div id="header-placeholder"></div>
+
+    <div class="mid-section">
+
+        <!-- ===== SECTION 1: HERO with background image ===== -->
+        <section class="hero-section" data-aos="fade-up">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+                    <i class="fas fa-bolt"></i> 25,000+ JOBS AVAILABLE
+                </div>
+                <h1 data-aos="fade-right" data-aos-delay="200">
+                    Find Your <span>Dream Career</span> Today
+                </h1>
+                <p class="hero-description" data-aos="fade-left" data-aos-delay="300">
+                    Discover thousands of opportunities from world-class companies. 
+                    Remote, hybrid, or on-site — your next role is waiting.
+                </p>
+                <div class="hero-buttons" data-aos="zoom-in" data-aos-delay="400">
+                    <button class="primary-btn" onclick="window.location.href='404.html'">
+                        <i class="fas fa-rocket"></i> Get Started
+                    </button>
+                    <button class="outline-btn" onclick="window.location.href='404.html'">
+                        <i class="fas fa-video"></i> Watch Demo
+                    </button>
+                </div>
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
+                    <div class="stat-item">
+                        <div class="stat-number">25K+</div>
+                        <div class="stat-label">Active Jobs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8K+</div>
+                        <div class="stat-label">Companies</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150K+</div>
+                        <div class="stat-label">Placements</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: JOB CATEGORIES (floating cards) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Explore by Category</h2>
+                <p>Find your perfect role in these high-demand fields</p>
+            </div>
+            <div class="categories-wrapper">
+                <div class="floating-category" data-aos="flip-left" data-aos-delay="50">
+                    <i class="fas fa-code"></i>
+                    <h3>Technology</h3>
+                    <p>Software, DevOps, AI, Cloud & more</p>
+                    <div class="category-meta">
+                        <span><i class="fas fa-briefcase"></i> 3,456 jobs</span>
+                        <span><i class="fas fa-building"></i> 892 companies</span>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Browse Tech →</button>
+                </div>
+                <div class="floating-category" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Marketing</h3>
+                    <p>Digital, Brand, SEO, Content & Analytics</p>
+                    <div class="category-meta">
+                        <span><i class="fas fa-briefcase"></i> 2,134 jobs</span>
+                        <span><i class="fas fa-building"></i> 567 companies</span>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Browse Marketing →</button>
+                </div>
+                <div class="floating-category" data-aos="flip-left" data-aos-delay="150">
+                    <i class="fas fa-coins"></i>
+                    <h3>Finance</h3>
+                    <p>Investment, Banking, Analysis & Consulting</p>
+                    <div class="category-meta">
+                        <span><i class="fas fa-briefcase"></i> 1,876 jobs</span>
+                        <span><i class="fas fa-building"></i> 423 companies</span>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Browse Finance →</button>
+                </div>
+                <div class="floating-category" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fas fa-hospital"></i>
+                    <h3>Healthcare</h3>
+                    <p>Medical, Pharma, Research & Nursing</p>
+                    <div class="category-meta">
+                        <span><i class="fas fa-briefcase"></i> 2,567 jobs</span>
+                        <span><i class="fas fa-building"></i> 345 companies</span>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Browse Healthcare →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: LOCATION SHOWCASE (glass morphism) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Jobs by Location</h2>
+                <p>Discover opportunities in top cities worldwide</p>
+            </div>
+            <div class="location-showcase">
+                <div class="glass-location" data-aos="zoom-in" data-aos-delay="50">
+                    <img src="newyork.webp" alt="New York">
+                    <div class="glass-overlay">
+                        <h3>New York</h3>
+                        <p>2,345 open jobs</p>
+                        <button class="card-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+                <div class="glass-location" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="london.webp" alt="London">
+                    <div class="glass-overlay">
+                        <h3>London</h3>
+                        <p>1,876 open jobs</p>
+                        <button class="card-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+                <div class="glass-location" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="singapore.webp" alt="Singapore">
+                    <div class="glass-overlay">
+                        <h3>Singapore</h3>
+                        <p>1,234 open jobs</p>
+                        <button class="card-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: FEATURED JOBS (horizontal cards) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Featured Opportunities</h2>
+                <p>Hand-picked jobs from top employers</p>
+            </div>
+            <div class="featured-jobs-wrapper">
+                <div class="horizontal-job-card" data-aos="fade-right" data-aos-delay="50">
+                    <img src="Jp8.webp" alt="Google">
+                    <div class="job-info">
+                        <h3>Senior Frontend Developer</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-building"></i> Google</span>
+                            <span><i class="fas fa-map-pin"></i> Remote</span>
+                            <span><i class="fas fa-clock"></i> 2 days ago</span>
+                        </div>
+                        <p>React, TypeScript, Next.js. Build products for billions.</p>
+                        <div style="margin-top: 15px;">
+                            <button class="card-btn" onclick="window.location.href='404.html'">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="horizontal-job-card" data-aos="fade-left" data-aos-delay="50">
+                    <img src="Jp12.webp" alt="Microsoft">
+                    <div class="job-info">
+                        <h3>Product Manager</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-building"></i> Microsoft</span>
+                            <span><i class="fas fa-map-pin"></i> Hybrid</span>
+                            <span><i class="fas fa-clock"></i> 1 day ago</span>
+                        </div>
+                        <p>Lead Azure cloud product strategy and roadmap.</p>
+                        <div style="margin-top: 15px;">
+                            <button class="card-btn" onclick="window.location.href='404.html'">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="horizontal-job-card" data-aos="fade-right" data-aos-delay="100">
+                    <img src="Jp1.webp" alt="Amazon">
+                    <div class="job-info">
+                        <h3>Data Scientist</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-building"></i> Amazon</span>
+                            <span><i class="fas fa-map-pin"></i> Remote</span>
+                            <span><i class="fas fa-clock"></i> 5 hours ago</span>
+                        </div>
+                        <p>Machine Learning, Python, AWS. Build recommendation engines.</p>
+                        <div style="margin-top: 15px;">
+                            <button class="card-btn" onclick="window.location.href='404.html'">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="horizontal-job-card" data-aos="fade-left" data-aos-delay="100">
+                    <img src="Jp9.webp" alt="Apple">
+                    <div class="job-info">
+                        <h3>UX Designer</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-building"></i> Apple</span>
+                            <span><i class="fas fa-map-pin"></i> On-site</span>
+                            <span><i class="fas fa-clock"></i> 3 days ago</span>
+                        </div>
+                        <p>Design next-gen interfaces for iOS and macOS.</p>
+                        <div style="margin-top: 15px;">
+                            <button class="card-btn" onclick="window.location.href='404.html'">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: TRENDING ROLES (bubble design) ===== -->
+        <section class="trending-cloud" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Trending Roles</h2>
+                <p>Most searched job titles this week</p>
+            </div>
+            <div class="bubble-container">
+                <div class="role-bubble" data-aos="zoom-in" data-aos-delay="50">
+                    <i class="fab fa-react"></i>
+                    <span>React Developer</span>
+                    <button class="trending-btn" onclick="window.location.href='404.html'">1,234 jobs</button>
+                </div>
+                <div class="role-bubble" data-aos="zoom-in" data-aos-delay="70">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Data Analyst</span>
+                    <button class="trending-btn" onclick="window.location.href='404.html'">987 jobs</button>
+                </div>
+                <div class="role-bubble" data-aos="zoom-in" data-aos-delay="90">
+                    <i class="fas fa-cloud"></i>
+                    <span>DevOps Engineer</span>
+                    <button class="trending-btn" onclick="window.location.href='404.html'">756 jobs</button>
+                </div>
+                <div class="role-bubble" data-aos="zoom-in" data-aos-delay="110">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Engineer</span>
+                    <button class="trending-btn" onclick="window.location.href='404.html'">645 jobs</button>
+                </div>
+                <div class="role-bubble" data-aos="zoom-in" data-aos-delay="130">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Cybersecurity</span>
+                    <button class="trending-btn" onclick="window.location.href='404.html'">534 jobs</button>
+                </div>
+                <div class="role-bubble" data-aos="zoom-in" data-aos-delay="150">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>UI/UX Designer</span>
+                    <button class="trending-btn" onclick="window.location.href='404.html'">823 jobs</button>
+                </div>
+                <div class="role-bubble" data-aos="zoom-in" data-aos-delay="170">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>Financial Analyst</span>
+                    <button class="trending-btn" onclick="window.location.href='404.html'">456 jobs</button>
+                </div>
+                <div class="role-bubble" data-aos="zoom-in" data-aos-delay="190">
+                    <i class="fas fa-headset"></i>
+                    <span>Customer Success</span>
+                    <button class="trending-btn" onclick="window.location.href='404.html'">678 jobs</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 6: TOP EMPLOYERS (profile grid) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Top Employers</h2>
+                <p>Companies hiring the most right now</p>
+            </div>
+            <div class="employer-grid">
+                <div class="employer-card" data-aos="flip-up" data-aos-delay="50">
+                    <img src="Googlelogo.webp" alt="Google">
+                    <h4>Google</h4>
+                    <p>124 open jobs</p>
+                    <button class="company-btn" onclick="window.location.href='404.html'">View →</button>
+                </div>
+                <div class="employer-card" data-aos="flip-up" data-aos-delay="70">
+                    <img src="Microsoftlogo.webp" alt="Microsoft">
+                    <h4>Microsoft</h4>
+                    <p>98 open jobs</p>
+                    <button class="company-btn" onclick="window.location.href='404.html'">View →</button>
+                </div>
+                <div class="employer-card" data-aos="flip-up" data-aos-delay="90">
+                    <img src="Amazonlogo.webp" alt="Amazon">
+                    <h4>Amazon</h4>
+                    <p>156 open jobs</p>
+                    <button class="company-btn" onclick="window.location.href='404.html'">View →</button>
+                </div>
+                <div class="employer-card" data-aos="flip-up" data-aos-delay="110">
+                    <img src="SAPlogo.webp" alt="Apple">
+                    <h4>SAP</h4>
+                    <p>87 open jobs</p>
+                    <button class="company-btn" onclick="window.location.href='404.html'">View →</button>
+                </div>
+                <div class="employer-card" data-aos="flip-up" data-aos-delay="130">
+                    <img src="IBMlogo.webp" alt="Meta">
+                    <h4>IBM</h4>
+                    <p>112 open jobs</p>
+                    <button class="company-btn" onclick="window.location.href='404.html'">View →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 7: SALARY GUIDE (stacked cards) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Salary Guide 2026</h2>
+                <p>Average annual salaries by role</p>
+            </div>
+            <div class="salary-stack">
+                <div class="stack-card" data-aos="flip-down" data-aos-delay="50">
+                    <i class="fas fa-code"></i>
+                    <h3>Software Engineer</h3>
+                    <div class="salary-range">$95k - $165k</div>
+                    <p>Based on 5,678 salaries</p>
+                    <button class="salary-btn" onclick="window.location.href='404.html'">Details →</button>
+                </div>
+                <div class="stack-card" data-aos="flip-down" data-aos-delay="70">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Product Manager</h3>
+                    <div class="salary-range">$110k - $190k</div>
+                    <p>Based on 3,245 salaries</p>
+                    <button class="salary-btn" onclick="window.location.href='404.html'">Details →</button>
+                </div>
+                <div class="stack-card" data-aos="flip-down" data-aos-delay="90">
+                    <i class="fas fa-database"></i>
+                    <h3>Data Scientist</h3>
+                    <div class="salary-range">$105k - $180k</div>
+                    <p>Based on 4,123 salaries</p>
+                    <button class="salary-btn" onclick="window.location.href='404.html'">Details →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 8: JOB ALERTS (with email validation) ===== -->
+        <section class="alerts-unique" data-aos="zoom-out">
+            <h2 data-aos="fade-down">Never Miss a Job</h2>
+            <p data-aos="fade-up">Get personalized job alerts delivered to your inbox</p>
+            <div class="alerts-form" data-aos="zoom-in" data-aos-delay="200">
+                <input type="email" id="alertEmail" placeholder="Enter your work email">
+                <button class="subscribe-btn" onclick="validateAndRedirect()">Subscribe Now</button>
+            </div>
+            <div id="emailError" class="error-message">Please enter a valid email address</div>
+        </section>
+
+        <!-- ===== SECTION 9: CAREER RESOURCES (magazine style) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Career Resources</h2>
+                <p>Expert advice to boost your job search</p>
+            </div>
+            <div class="resources-grid">
+                <div class="magazine-card" data-aos="fade-right" data-aos-delay="50">
+                    <img src="Jp4.webp" alt="Resume Tips">
+                    <div class="magazine-content">
+                        <h3>Resume Writing Guide</h3>
+                        <p>Learn how to make your resume stand out to recruiters and ATS systems.</p>
+                        <div class="resource-meta">5 min read</div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read More →</button>
+                    </div>
+                </div>
+                <div class="magazine-card" data-aos="fade-up" data-aos-delay="50">
+                    <img src="Jp17.webp" alt="Interview Tips">
+                    <div class="magazine-content">
+                        <h3>Ace Your Interview</h3>
+                        <p>Top 50 interview questions and how to answer them effectively.</p>
+                        <div class="resource-meta">8 min read</div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read More →</button>
+                    </div>
+                </div>
+                <div class="magazine-card" data-aos="fade-left" data-aos-delay="50">
+                    <img src="Jp5.webp" alt="Career Growth">
+                    <div class="magazine-content">
+                        <h3>Career Growth Hacks</h3>
+                        <p>Strategies to accelerate your career progression in 2026.</p>
+                        <div class="resource-meta">6 min read</div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read More →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 10: MOBILE APP (split design) ===== -->
+        <section class="app-showcase" data-aos="fade-up">
+            <div class="app-content" data-aos="fade-right" data-aos-delay="100">
+                <h2>Find Jobs on the Go</h2>
+                <p>Download our mobile app and search jobs anywhere, anytime.</p>
+                <div class="app-features">
+                    <div class="app-feature">
+                        <i class="fas fa-bell"></i>
+                        <span>Instant job alerts</span>
+                    </div>
+                    <div class="app-feature">
+                        <i class="fas fa-bolt"></i>
+                        <span>One-click apply</span>
+                    </div>
+                    <div class="app-feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Salary insights</span>
+                    </div>
+                </div>
+                <div class="app-buttons" style="margin-top: 30px;">
+                    <button class="app-btn" onclick="window.location.href='404.html'">
+                        <i class="fab fa-apple"></i> App Store
+                    </button>
+                    <button class="app-btn" onclick="window.location.href='404.html'">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </button>
+                </div>
+            </div>
+            <div class="app-image" data-aos="fade-left" data-aos-delay="200">
+                <img src="mob.webp" alt="Mobile App">
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- AOS & Validation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // Email validation function
+        function validateAndRedirect() {
+            const emailInput = document.getElementById('alertEmail');
+            const errorDiv = document.getElementById('emailError');
+            const email = emailInput.value.trim();
+            
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email === '' || !emailRegex.test(email)) {
+                errorDiv.style.display = 'block';
+                emailInput.style.border = '1px solid #ff6b6b';
+            } else {
+                errorDiv.style.display = 'none';
+                emailInput.style.border = '1px solid rgba(255,255,255,0.2)';
+                window.location.href = '404.html';
+            }
+        }
+
+        // All other buttons redirect to 404.html
+        document.querySelectorAll('button:not(.subscribe-btn)').forEach(btn => {
+            if (!btn.hasAttribute('onclick')) {
+                btn.addEventListener('click', function() {
+                    window.location.href = '404.html';
+                });
+            }
+        });
+        // =====================================================================
+        // ===== TAB FUNCTION =====
+    function showTab(event, tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    // ===== NEWSLETTER VALIDATION =====
+    function validateNewsletter(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showNewsletterError(message) {
+        // Remove any existing error message
+        const existingMsg = document.querySelector('.newsletter-error');
+        if (existingMsg) existingMsg.remove();
+        
+        // Create error message element
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'newsletter-error';
+        msgDiv.style.cssText = `
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            background: #fee;
+            color: #c00;
+        `;
+        msgDiv.textContent = message;
+        
+        // Find newsletter container
+        const newsletter = document.querySelector('.newsletter-form, .footer-newsletter, [class*="newsletter"]');
+        if (newsletter) {
+            newsletter.appendChild(msgDiv);
+            
+            // Remove error message after 3 seconds
+            setTimeout(() => msgDiv.remove(), 3000);
+        } else {
+            alert(message);
+        }
+    }
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load header
+        fetch('header1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initHeaderInteractions, 100);
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<header style="background: #6c5ce7; color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+            });
+
+        // Load footer
+        fetch('footer1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<footer style="background: #1a1a2e; color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+            });
+    });
+
+    // ===== HEADER INTERACTIONS =====
+    function initHeaderInteractions() {
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        // Mobile menu toggle
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-icon').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                if (!dropdown) return;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== dropdownId) {
+                        menu.classList.remove('show');
+                    }
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item-with-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    }
+
+    // ===== AOS INITIALIZATION =====
+    const aosScript = document.createElement('script');
+    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    document.head.appendChild(aosScript);
+    
+    aosScript.onload = function() {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+    };
+
+    // ===== ANIMATION OBSERVER =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-up, [data-aos]');
+            animatedElements.forEach(el => observer.observe(el));
+        }, 500);
+    });
+
+    // ===== NEWSLETTER HANDLER - VALIDATE THEN REDIRECT TO 404 =====
+    document.addEventListener('click', function(e) {
+        const newsletterBtn = e.target.closest('.newsletter-btn, .subscribe-btn, [class*="newsletter"] button, button[type="submit"]');
+        if (!newsletterBtn) return;
+        
+        const form = newsletterBtn.closest('form');
+        const newsletterInput = form ? form.querySelector('input[type="email"]') : 
+                                document.querySelector('.newsletter-input, input[type="email"][placeholder*="email"]');
+        
+        if (newsletterInput) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const email = newsletterInput.value.trim();
+            
+            // If email is empty or invalid, show error and DON'T redirect
+            if (!email) {
+                showNewsletterError('Please enter your email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            if (!validateNewsletter(email)) {
+                showNewsletterError('Please enter a valid email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            // Email is valid - redirect to 404.html
+            window.location.href = '404.html';
+            return false;
+        }
+    });
+
+    // ===== BUTTON REDIRECT HANDLER (for all other buttons) =====
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('button');
+        if (!button) return;
+        
+        // Skip newsletter buttons (already handled above)
+        if (button.closest('.newsletter-form') || 
+            button.classList.contains('newsletter-btn') || 
+            button.classList.contains('subscribe-btn') ||
+            button.closest('[class*="newsletter"]')) {
+            return;
+        }
+        
+        // Skip special buttons
+        if (button.hasAttribute('onclick') || 
+            button.classList.contains('dropdown-icon') || 
+            button.classList.contains('video-btn') ||
+            button.classList.contains('tab-btn')) {
+            return;
+        }
+        
+        // Redirect all other buttons to 404
+        e.preventDefault();
+        window.location.href = '404.html';
+    });
+
+    // Back to Top Button Functionality
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {  // Show after scrolling 500px
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Smooth scroll animation
+    });
+});
+    </script>
+</body>
+</html>
